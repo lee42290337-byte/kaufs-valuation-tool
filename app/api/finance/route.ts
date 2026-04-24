@@ -43,9 +43,9 @@ export async function POST(request: Request) {
     );
     const dartResults = await Promise.all(fetchPromises);
 
-    // 4. ★ 데이터 가공 (이 부분이 누락되면 에러가 납니다)
-    const revenue = []; const op = []; const ni = [];
-    const assets = []; const equity = [];
+    // 뒤에 : any[] 를 붙여서 타입이 '무엇이든 들어올 수 있는 배열'임을 명시합니다.
+    const revenue: any[] = []; const op: any[] = []; const ni: any[] = [];
+    const assets: any[] = []; const equity: any[] = [];
 
     for (const res of dartResults) {
       if (res.status !== "000" || !res.list) throw new Error("DART 재무 데이터가 부족합니다.");
